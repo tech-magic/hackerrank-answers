@@ -1,0 +1,25 @@
+/* Hidden stub code will pass a root argument to the function below. Complete the function to solve the challenge. Hint: you may want to write one or more helper functions.  
+
+The Node class is defined as follows:
+    class Node {
+        int data;
+        Node left;
+        Node right;
+     }
+*/
+    boolean checkBST(Node root) {
+        return recCheckBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);               
+    }
+
+    boolean recCheckBST(Node localRoot, int min, int max) {
+        if(localRoot == null) {
+            return true;
+        } else {
+            if(localRoot.data <= min || localRoot.data >= max) {
+                return false;
+            } else {
+                return recCheckBST(localRoot.left, min, localRoot.data) && 
+                    recCheckBST(localRoot.right, localRoot.data, max);
+            }
+        }
+    }
